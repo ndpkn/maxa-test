@@ -16,8 +16,17 @@ useEffect(() => {
             case 'text':
                 element = new fabric.Text(options.text, options);
             break;
-            case 'svg':
-                element = new fabric.Path(options.path, options);
+            case 'circle':
+                element = new fabric.Circle({radius: 100, fill: 'green', left: 100, top: 100});
+            break;
+            case 'triangle':
+                element = new fabric.Triangle({width: 150, height: 130, fill: 'red', left: 50, top: 50});
+            break;
+            case 'line':
+                element = new fabric.Line([50, 10, 200, 150], {stroke: 'blue'});
+            break;
+            case 'rectangle':
+                element = new fabric.Rect({width: 150, height: 150, fill: 'yellow', left: 30, top: 100});
             break;
             case 'image':
                 fabric.Image.fromURL(options.src, img => {
@@ -33,17 +42,15 @@ useEffect(() => {
     
         // Обновляем Canvas при изменении размеров окна
     window.addEventListener('resize', () => {
-        canvas.setWidth(window.innerWidth - 300);
-        canvas.setHeight(window.innerHeight - 300);
+        canvas.setWidth(700);
+        canvas.setHeight(500);
         canvas.renderAll();
     });
     });
 
     // Устанавливаем размер Canvas
-    canvas.setWidth(window.innerWidth - 300);
-    canvas.setHeight(window.innerHeight - 300);
-
-
+    canvas.setWidth(1000);
+    canvas.setHeight(800);
 
     return () => {
     // Очищаем Canvas при размонтировании компонента
