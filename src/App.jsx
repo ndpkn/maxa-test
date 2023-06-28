@@ -5,13 +5,12 @@ import SidebarView from "./components/SidebarView";
 import CanvasView from "./components/CanvasView";
 import Header from "./components/Header";
 
-const Canvas = () => {
+const App = () => {
   const canvasRef = useRef(null);
   const [canvas, setCanvas] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [history, setHistory] = useState([]);
-  const [historyIndex, setHistoryIndex] = useState(-1); // Добавляем новое состояние для отслеживания индекса истории
-
+  const [historyIndex, setHistoryIndex] = useState(-1); 
   useEffect(() => {
     const newCanvas = new fabric.Canvas(canvasRef.current, {
       width: 800,
@@ -109,22 +108,20 @@ const Canvas = () => {
 
   const undo = () => {
     if (canvas && historyIndex > 0) {
-      // Проверяем, есть ли что отменять
       const previousState = history[historyIndex - 1];
       canvas.loadFromJSON(previousState, () => {
         canvas.renderAll();
-        setHistoryIndex((prevIndex) => prevIndex - 1); // Уменьшаем индекс истории
+        setHistoryIndex((prevIndex) => prevIndex - 1);
       });
     }
   };
 
   const redo = () => {
     if (canvas && historyIndex < history.length - 1) {
-      // Проверяем, есть ли что восстанавливать
       const nextState = history[historyIndex + 1];
       canvas.loadFromJSON(nextState, () => {
         canvas.renderAll();
-        setHistoryIndex((prevIndex) => prevIndex + 1); // Увеличиваем индекс истории
+        setHistoryIndex((prevIndex) => prevIndex + 1);
       });
     }
   };
@@ -173,4 +170,4 @@ const Canvas = () => {
   );
 };
 
-export default Canvas;
+export default App;
