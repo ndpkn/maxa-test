@@ -1,10 +1,69 @@
+body {
+    background-color: #FBF9F7;
+}
 .main {
     max-width: 1550px;
     height: 100%;
     margin: 0 auto;
     display: flex;
 }
-.saveButton {
-    text-align: center;
-    margin-top: 20px;
+
+.canvas {
+    // max-width: 100%;
+    // position: relative;
+    display: flex;
+    max-width: 1550px;
+    margin: 0 auto;
+    &__buttons {
+        margin-right: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &-shapes {
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid #00000046;
+            >button {
+                margin-bottom: 10px;
+            }
+        }
+        &-controls {
+            display: flex;
+            flex-direction: column;
+            >button {
+                margin-bottom: 5px;
+            }
+        }
+    }
+    &__field {
+        border: 1px solid rgba(0, 0, 0, 0.146);
+        border-radius: 5px;
+        background-color: #fff;
+
+    }
+}
+
+.closeButton {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    >h2 {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: 400;
+        text-transform: uppercase;
+        font-size: 16px;
+        line-height: 16px;
+        color: #00000094;
+    }
+    >img {
+        height: 70px;
+    }
 }
